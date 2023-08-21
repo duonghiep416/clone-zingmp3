@@ -527,19 +527,7 @@
                         <i class="fa-solid fa-ellipsis"></i>
                     </span>
                 </div>
-                <div class="playlist-songs active">
-                    <div class="song-item active">
-                        <img
-                            src="./assets/img/music/listSong1/song1.jpg"
-                            alt="Song 1"
-                            class="song-thumb"
-                        />
-                        <div class="song-info">
-                            <p class="song-name">Sau này, chúng ta giàu</p>
-                            <a href="" class="song-singer">Khắc Việt, ACV</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="playlist-songs active"></div>
                 <div class="currently-songs">
                     <div class="song-item">
                         <img
@@ -557,16 +545,12 @@
                 </div>
             </aside>
             <footer class="player-control">
-                <audio src=""></audio>
+                <audio src="" id="song-audio"></audio>
                 <div class="song-info-control">
-                    <img
-                        src="./assets/img/albums/album1.jpg"
-                        class="song-thumb-control"
-                        alt="Song-1"
-                    />
+                    <img src="" class="song-thumb-control" alt="" />
                     <div class="song-info">
-                        <p class="song-name">Ngày mai người ta lấy chồng</p>
-                        <a href="#" class="song-singer">Thành Đạt</a>
+                        <p class="song-name"></p>
+                        <a href="#" class="song-singer"></a>
                     </div>
                     <div class="song-actions">
                         <span class="song-action-item"
@@ -579,10 +563,10 @@
                 </div>
                 <div class="song-control-actions">
                     <div class="control-main-actions">
-                        <span class="action-icon">
+                        <span class="action-icon" id="random-btn">
                             <i class="fa-solid fa-shuffle"></i>
                         </span>
-                        <span class="action-icon">
+                        <span class="action-icon" id="prev-song">
                             <i class="fa-solid fa-backward-step"></i>
                         </span>
                         <span class="action-icon action-play">
@@ -592,7 +576,7 @@
                                 id="pause-song-btn"
                             ></i>
                         </span>
-                        <span class="action-icon">
+                        <span class="action-icon" id="next-song">
                             <i class="fa-solid fa-forward-step"></i>
                         </span>
                         <span class="action-icon">
@@ -601,11 +585,11 @@
                     </div>
 
                     <div class="duration-bar-container">
-                        <span class="current-time">00:02</span>
+                        <span class="current-time"></span>
                         <div class="duration-bar">
                             <div class="current-time-bar"></div>
                         </div>
-                        <span class="end-time">03:02</span>
+                        <span class="end-time"></span>
                     </div>
                 </div>
                 <div class="control-action-right">
@@ -622,5 +606,7 @@
                 </div>
             </footer>
         </div>
+        <script src="./data/song.js"></script>
+        <script src="./main.js"></script>
     </body>
 </html>
