@@ -62,44 +62,27 @@ const app = {
 
     renderTimeSong: function () {
         // Time currently playing
+        let isPlaying = false;
+
+        function updateTimeDisplay(timeInSeconds, element) {
+            let minutes = Math.trunc(timeInSeconds / 60);
+            let seconds = Math.floor(timeInSeconds - minutes * 60);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            element.innerHTML = `${minutes}:${seconds}`;
+        }
 
         audio.addEventListener("loadedmetadata", function () {
-            function handleTimePlaying() {
-                let duration = audio.duration;
-                let currentTimeSecond = audio.currentTime;
-                let minutesDuration = Math.trunc(duration / 60);
-                let secondsDuration = Math.floor(
-                    duration - minutesDuration * 60
-                );
-                let minutesCurrentTime = Math.trunc(currentTimeSecond / 60);
-                let secondsCurrentTime = Math.floor(
-                    currentTimeSecond - minutesCurrentTime * 60
-                );
-                minutesDuration =
-                    minutesDuration < 10
-                        ? "0" + minutesDuration
-                        : minutesDuration;
-                secondsDuration =
-                    secondsDuration < 10
-                        ? "0" + secondsDuration
-                        : secondsDuration;
-                endTime.innerHTML = `${minutesDuration}:${secondsDuration}`;
-
-                minutesCurrentTime =
-                    minutesCurrentTime < 10
-                        ? "0" + minutesCurrentTime
-                        : minutesCurrentTime;
-                secondsCurrentTime =
-                    secondsCurrentTime < 10
-                        ? "0" + secondsCurrentTime
-                        : secondsCurrentTime;
-
-                currentTime.innerHTML = `${minutesCurrentTime}:${secondsCurrentTime}`;
-                setInterval(handleTimePlaying, 1000);
+            if (!isPlaying) {
+                updateTimeDisplay(audio.duration, endTime);
+                updateTimeDisplay(audio.currentTime, currentTime);
             }
-            handleTimePlaying();
-            if (!audio.paused) {
-                handleTimePlaying();
+        });
+
+        audio.addEventListener("timeupdate", function () {
+            if (audio.currentTime > 0 || isPlaying) {
+                isPlaying = true;
+                updateTimeDisplay(audio.currentTime, currentTime);
             }
         });
     },
