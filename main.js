@@ -13,6 +13,9 @@ const prevBtn = $(".player-control #prev-song");
 const randomBtn = $(".player-control #random-btn");
 const currentTime = $(".player-control .current-time");
 const endTime = $(".player-control .end-time");
+const currentTimeBar = $(".current-time-bar");
+const durationTimeBar = $(".duration-bar");
+
 const audio = $("#song-audio");
 const app = {
     currentIndex: 0,
@@ -72,10 +75,23 @@ const app = {
             element.innerHTML = `${minutes}:${seconds}`;
         }
 
+        function updateCurrentTimeBar() {
+            let widthCurrentTimeBar = Math.floor(
+                (audio.currentTime / audio.duration) * 100
+            );
+            currentTimeBar.style.width = `${widthCurrentTimeBar}%`;
+            durationTimeBar.addEventListener("click", function (e) {
+                audio.play();
+                audio.currentTime =
+                    (e.offsetX / durationTimeBar.offsetWidth) * audio.duration;
+            });
+        }
+
         audio.addEventListener("loadedmetadata", function () {
             if (!isPlaying) {
                 updateTimeDisplay(audio.duration, endTime);
                 updateTimeDisplay(audio.currentTime, currentTime);
+                updateCurrentTimeBar();
             }
         });
 
@@ -83,6 +99,8 @@ const app = {
             if (audio.currentTime > 0 || isPlaying) {
                 isPlaying = true;
                 updateTimeDisplay(audio.currentTime, currentTime);
+                updateCurrentTimeBar();
+                app.checkIsPlaying();
             }
         });
     },
