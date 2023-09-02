@@ -22,6 +22,7 @@ const dotTimeBar = $(".song-control-actions .current-time-bar .dot-time-bar");
 const dotVolumeBar = $(
     ".control-action-volume .current-time-bar .dot-time-bar"
 );
+const tooltipTime = $(".tooltip-time");
 
 const muteBtn = $(".volume-icon .unmuted");
 const unmuteBtn = $(".volume-icon .muted");
@@ -84,6 +85,22 @@ const app = {
             seconds = seconds < 10 ? "0" + seconds : seconds;
             element.innerHTML = `${minutes}:${seconds}`;
         }
+
+        dotTimeBar.addEventListener("mousemove", function (e) {
+            e.stopPropagation();
+        });
+
+        durationTimeBar.addEventListener("mousemove", function (e) {
+            tooltipTime.style.display = "block";
+            tooltipTime.style.left = `${e.offsetX}px`;
+            let time =
+                (e.offsetX / durationTimeBar.offsetWidth) * audio.duration;
+            updateTimeDisplay(time, tooltipTime);
+        });
+
+        durationTimeBar.addEventListener("mouseout", function (e) {
+            tooltipTime.style.display = "none";
+        });
 
         function updateCurrentTimeBar() {
             if (!isDragging) {

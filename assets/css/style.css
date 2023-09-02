@@ -503,6 +503,7 @@ main {
     flex-basis: 25%;
 }
 
+.duration-bar-container .tooltip-time,
 .duration-bar-container .end-time,
 .duration-bar-container .current-time {
     font-size: 1.2rem;
@@ -539,4 +540,11 @@ main {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+}
+
+.duration-bar-container .tooltip-time {
+    position: absolute;
+    transform: translateX(-50%);
+    top: -20px;
+    display: none;
 }
