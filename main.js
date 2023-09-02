@@ -15,7 +15,16 @@ const currentTime = $(".player-control .current-time");
 const endTime = $(".player-control .end-time");
 const currentTimeBar = $(".current-time-bar");
 const durationTimeBar = $(".duration-bar");
+const durationVolumeBar = $(".control-action-volume");
+const volumeBarContainer = $(".control-action-volume .duration-bar");
+const volumeBar = $(".control-action-volume .current-time-bar");
+const dotTimeBar = $(".song-control-actions .current-time-bar .dot-time-bar");
+const dotVolumeBar = $(
+    ".control-action-volume .current-time-bar .dot-time-bar"
+);
 
+const muteBtn = $(".volume-icon .unmuted");
+const unmuteBtn = $(".volume-icon .muted");
 const audio = $("#song-audio");
 const app = {
     currentIndex: 0,
@@ -66,6 +75,7 @@ const app = {
     renderTimeSong: function () {
         // Time currently playing
         let isPlaying = false;
+        let isDragging = false;
 
         function updateTimeDisplay(timeInSeconds, element) {
             let minutes = Math.trunc(timeInSeconds / 60);
@@ -76,17 +86,131 @@ const app = {
         }
 
         function updateCurrentTimeBar() {
-            let widthCurrentTimeBar = Math.floor(
-                (audio.currentTime / audio.duration) * 100
-            );
-            currentTimeBar.style.width = `${widthCurrentTimeBar}%`;
-            durationTimeBar.addEventListener("click", function (e) {
-                audio.play();
-                audio.currentTime =
-                    (e.offsetX / durationTimeBar.offsetWidth) * audio.duration;
+            if (!isDragging) {
+                let widthCurrentTimeBar = Math.floor(
+                    (audio.currentTime / audio.duration) * 100
+                );
+                currentTimeBar.style.width = `${widthCurrentTimeBar}%`;
+                durationTimeBar.addEventListener("mousedown", function (e) {
+                    audio.play();
+                    audio.currentTime =
+                        (e.offsetX / durationTimeBar.offsetWidth) *
+                        audio.duration;
+                });
+            }
+        }
+
+        // Seek
+
+        function dragTimeBar() {
+            let pointStart = 0;
+            let pointEnd = 0;
+            let initialSpace = 0;
+            let space;
+            dotTimeBar.addEventListener("mousedown", function (e) {
+                e.stopPropagation();
+                isDragging = true;
+                pointStart = e.clientX;
+            });
+
+            document.addEventListener("mousemove", function (e) {
+                if (isDragging) {
+                    pointEnd = e.clientX;
+                    space = pointEnd - pointStart;
+                    if (space + initialSpace <= durationTimeBar.offsetWidth) {
+                        currentTimeBar.style.width = `${
+                            ((space + initialSpace) * 100) /
+                            durationTimeBar.offsetWidth
+                        }%`;
+                    }
+                }
+            });
+
+            document.addEventListener("mouseup", function () {
+                if (isDragging) {
+                    audio.currentTime = Math.floor(
+                        ((pointEnd - pointStart + initialSpace) /
+                            durationTimeBar.offsetWidth) *
+                            audio.duration
+                    );
+                    audio.play();
+                    initialSpace += space;
+                    isDragging = false;
+                }
+            });
+            durationTimeBar.addEventListener("mousedown", function (e) {
+                initialSpace += e.offsetX - currentTimeBar.offsetWidth;
+            });
+        }
+        dragTimeBar();
+
+        //Update Volume
+        function changeVolume(e) {
+            let initialSpace = volumeBarContainer.offsetWidth;
+            let pointStart = 0;
+            let pointEnd = 0;
+            let space = 0;
+            let isDraggingVolume = false;
+            dotVolumeBar.addEventListener("mousedown", function (e) {
+                e.stopPropagation();
+                isDraggingVolume = true;
+                pointStart = e.clientX;
+            });
+            volumeBar.style.width = `${audio.volume * 100}%`;
+            document.addEventListener("mousemove", function (e) {
+                if (isDraggingVolume) {
+                    pointEnd = e.clientX;
+                    space = pointEnd - pointStart;
+                    if (
+                        space + initialSpace >= 0 &&
+                        space + initialSpace <= volumeBarContainer.offsetWidth
+                    ) {
+                        audio.volume =
+                            (space + initialSpace) /
+                            volumeBarContainer.offsetWidth;
+                    }
+                    if (space + initialSpace < 0) {
+                        audio.volume = 0;
+
+                        muteBtn.style.display = "none";
+                        unmuteBtn.style.display = "block";
+                    }
+                    if (audio.volume > 0) {
+                        muteBtn.style.display = "block";
+                        unmuteBtn.style.display = "none";
+                    }
+                }
+            });
+
+            document.addEventListener("mouseup", function (e) {
+                if (isDraggingVolume) {
+                    initialSpace += space;
+                    isDraggingVolume = false;
+                }
+            });
+            volumeBarContainer.addEventListener("mousedown", (e) => {
+                audio.volume = e.offsetX / volumeBarContainer.offsetWidth;
+                initialSpace = e.offsetX;
+            });
+            unmuteBtn.addEventListener("click", () => {
+                muteBtn.style.display = "block";
+                unmuteBtn.style.display = "none";
+                audio.volume = 0.5;
+                initialSpace = volumeBarContainer.offsetWidth * 0.5;
+            });
+            muteBtn.addEventListener("click", () => {
+                muteBtn.style.display = "none";
+                unmuteBtn.style.display = "block";
+                audio.volume = 0;
+                initialSpace = 0;
             });
         }
 
+        changeVolume();
+        audio.addEventListener("volumechange", () => {
+            volumeBar.style.width = `${audio.volume * 100}%`;
+        });
+        //Update volume ended
         audio.addEventListener("loadedmetadata", function () {
             if (!isPlaying) {
                 updateTimeDisplay(audio.duration, endTime);
@@ -141,7 +265,7 @@ const app = {
         });
 
         //Next song
-        nextBtn.addEventListener("click", function () {
+        function nextSong() {
             if (randomIsOn) {
                 let randomNumber = Math.floor(Math.random() * songs.length);
                 while (app.currentIndex === randomNumber) {
@@ -160,6 +284,12 @@ const app = {
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
+        }
+        nextBtn.addEventListener("click", nextSong);
+        audio.addEventListener("timeupdate", function () {
+            if (audio.currentTime === audio.duration) {
+                nextSong();
+            }
         });
 
         //Previous Song

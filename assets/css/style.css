@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 html {
     font-size: 10px;
@@ -483,6 +484,7 @@ main {
     height: 5px;
     position: relative;
     background-color: #5a5560;
+    cursor: pointer;
 }
 
 .current-time-bar {
@@ -491,9 +493,10 @@ main {
     left: 0;
     bottom: 0;
     background-color: #fff;
+    cursor: pointer;
 }
 
-.control-action-right {
+.control-action-volume {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -511,7 +514,7 @@ main {
     color: #fff;
 }
 
-.control-action-right .duration-bar-container {
+.control-action-volume .duration-bar-container {
     width: 100px;
     margin-top: 0;
     margin-left: 10px;
@@ -525,4 +528,15 @@ main {
 
 .volume-icon .muted {
     display: none;
+}
+
+.current-time-bar .dot-time-bar {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    background-color: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
 }
