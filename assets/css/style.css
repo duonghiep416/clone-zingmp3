@@ -548,3 +548,12 @@ main {
     top: -20px;
     display: none;
 }
+
+/* Animation queue-sidebar */
+@keyframes slideSidebar {
+    from {
+    }
+
+    to {
+    }
+}

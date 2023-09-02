@@ -128,6 +128,7 @@ const app = {
                 e.stopPropagation();
                 isDragging = true;
                 pointStart = e.clientX;
+                initialSpace = currentTimeBar.offsetWidth;
             });
 
             document.addEventListener("mousemove", function (e) {
