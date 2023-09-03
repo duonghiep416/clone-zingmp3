@@ -11,6 +11,7 @@ const pauseBtn = $(".player-control #pause-song-btn");
 const nextBtn = $(".player-control #next-song");
 const prevBtn = $(".player-control #prev-song");
 const randomBtn = $(".player-control #random-btn");
+const replayBtn = $(".player-control #replay-btn");
 const currentTime = $(".player-control .current-time");
 const endTime = $(".player-control .end-time");
 const currentTimeBar = $(".current-time-bar");
@@ -249,6 +250,7 @@ const app = {
 
     handleEvents: function () {
         let randomIsOn = false;
+        let replayIsOn = false;
         // Handle Play
         actionPlay.addEventListener("click", function () {
             if (audio.paused) {
@@ -263,11 +265,20 @@ const app = {
         // Random Song
         randomBtn.addEventListener("click", function () {
             randomIsOn = randomIsOn === false ? true : false;
-            console.log(randomIsOn);
             if (randomIsOn === true) {
                 randomBtn.style.color = "#c273ed";
             } else {
                 randomBtn.style.color = "#fff";
+            }
+        });
+
+        //Replay Song
+        replayBtn.addEventListener("click", function () {
+            replayIsOn = replayIsOn === false ? true : false;
+            if (replayIsOn === true) {
+                replayBtn.style.color = "#c273ed";
+            } else {
+                replayBtn.style.color = "#fff";
             }
         });
 
@@ -284,17 +295,22 @@ const app = {
 
         //Next song
         function nextSong() {
-            if (randomIsOn) {
+            if (randomIsOn && !replayIsOn) {
                 let randomNumber = Math.floor(Math.random() * songs.length);
                 while (app.currentIndex === randomNumber) {
                     randomNumber = Math.floor(Math.random() * songs.length);
                 }
                 app.currentIndex = randomNumber;
-            } else {
+            } else if (!randomIsOn && !replayIsOn) {
                 app.currentIndex++;
                 if (app.currentIndex > songs.length - 1) {
                     app.currentIndex = 0;
                 }
+            } else if (
+                (!randomIsOn && replayIsOn) ||
+                (randomIsOn && replayIsOn)
+            ) {
+                app.currentIndex = app.currentIndex;
             }
 
             app.getCurrentSong();
@@ -312,18 +328,21 @@ const app = {
 
         //Previous Song
         prevBtn.addEventListener("click", function () {
-            if (randomIsOn) {
+            if (randomIsOn && !replayIsOn) {
                 let randomNumber = Math.floor(Math.random() * songs.length);
                 while (app.currentIndex === randomNumber) {
                     randomNumber = Math.floor(Math.random() * songs.length);
                 }
 
                 app.currentIndex = randomNumber;
-            } else {
+            } else if (!randomIsOn && !replayIsOn) {
                 app.currentIndex--;
                 if (app.currentIndex < 0) {
                     app.currentIndex = songs.length - 1;
                 }
+            }
+            if ((!randomIsOn && replayIsOn) || (randomIsOn && replayIsOn)) {
+                app.currentIndex = app.currentIndex;
             }
 
             app.getCurrentSong();
