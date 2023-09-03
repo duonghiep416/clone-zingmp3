@@ -46,7 +46,15 @@ const app = {
                     />
                     <div class="song-info">
                         <p class="song-name">${song.name}</p>
-                        <a href="" class="song-singer">${song.singer}</a>
+                        <span class='singer-container'>
+                        ${song.singer
+                            .map(
+                                (singer) =>
+                                    `<a href="#" class="song-singer">${singer}</a>`
+                            )
+                            .join(", ")}
+                        
+                        </span>
                     </div>
                 </div>
             `;
@@ -251,6 +259,15 @@ const app = {
     handleEvents: function () {
         let randomIsOn = false;
         let replayIsOn = false;
+        document.addEventListener("keypress", function (e) {
+            if ((e.code = "Space")) {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            }
+        });
         // Handle Play
         actionPlay.addEventListener("click", function () {
             if (audio.paused) {

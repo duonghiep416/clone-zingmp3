@@ -2,37 +2,37 @@ const songs = [
     {
         id: 1,
         name: "Trước khi em tồn tại",
-        singer: "Việt Anh",
+        singer: ["Việt Anh"],
         thumbnail: "https://i3.ytimg.com/vi/jtFsZRHUyPE/maxresdefault.jpg",
-        album: "Sad Music",
-        playlist: null,
+        album: null,
+        playlist: "Sad Music",
         genre: "Modern Music",
         path: "./assets/music/listSong5/truoc-khi-em-ton-tai.mp3",
     },
     {
         id: 2,
         name: "id 072019 | 3107",
-        singer: "W/n",
+        singer: ["W/n"],
         thumbnail: "https://i3.ytimg.com/vi/leJb3VhQCrg/maxresdefault.jpg",
         album: "3107",
-        playlist: null,
+        playlist: "Sad Music",
         genre: "Modern Music",
         path: "./assets/music/listSong5/Wn-id-07201-3107-ft-267.mp3",
     },
     {
         id: 3,
         name: "QUERRY",
-        singer: "QNT",
+        singer: ["QNT"],
         thumbnail: "https://i3.ytimg.com/vi/7PxxZWrlRTc/maxresdefault.jpg",
-        album: "Sad Music",
-        playlist: null,
+        album: null,
+        playlist: "Sad Music",
         genre: "Modern Music",
         path: "./assets/music/listSong5/querry.mp3",
     },
     {
         id: 4,
         name: "XTC (Xích Thêm Chút)",
-        singer: "Rapital, Groovie, RPT Orijinn",
+        singer: ["Rapital", "Groovie", "RPT Orijinn"],
         thumbnail:
             "./assets/img/music/listSong5/artworks-L3Zsh3pwF7iuJEDy-xhvyoA-t500x500.jpg",
         album: "Sad Music",
@@ -43,7 +43,7 @@ const songs = [
     {
         id: 5,
         name: "3107 3",
-        singer: "W/n, DuongG, Nâu",
+        singer: ["W/n", "DuongG", "Nâu"],
         thumbnail: "https://i3.ytimg.com/vi/kfw7MYah2n0/maxresdefault.jpg",
         album: "3107",
         playlist: null,
@@ -53,7 +53,7 @@ const songs = [
     {
         id: 6,
         name: "Cứ Chill Thôi",
-        singer: "Chillies, Suni Hạ Linh, Rhymastic",
+        singer: ["Chillies", "Suni Hạ Linh", "Rhymastic"],
         thumbnail: "./assets/img/music/listSong1/song1.jpg",
         album: null,
         playlist: null,
@@ -63,7 +63,7 @@ const songs = [
     {
         id: 7,
         name: "Crush",
-        singer: "WN, Vani, An An",
+        singer: ["WN", "Vani", "An An"],
         thumbnail: "./assets/img/music/listSong1/song2.jpg",
         album: null,
         playlist: null,
@@ -73,7 +73,7 @@ const songs = [
     {
         id: 8,
         name: "Vô Tình",
-        singer: "Xesi, Hoaprox",
+        singer: ["Xesi", "Hoaprox"],
         thumbnail: "./assets/img/music/listSong1/song3.jpg",
         album: null,
         playlist: null,
@@ -83,7 +83,7 @@ const songs = [
     {
         id: 9,
         name: "Because I'm Stupid",
-        singer: "SS501",
+        singer: ["SS501"],
         thumbnail: "./assets/img/music/listSong1/song4.jpg",
         album: null,
         playlist: null,
@@ -93,7 +93,7 @@ const songs = [
     {
         id: 10,
         name: "Mama Boy",
-        singer: "AMEE",
+        singer: ["AMEE"],
         thumbnail: "./assets/img/music/listSong1/song5.jpg",
         album: null,
         playlist: null,
@@ -103,7 +103,7 @@ const songs = [
     {
         id: 11,
         name: "Cửu Vĩ Hồ",
-        singer: "Yun, Dr A",
+        singer: ["Yun", "Dr A"],
         thumbnail: "./assets/img/music/listSong1/song6.jpg",
         album: null,
         playlist: null,
@@ -113,7 +113,7 @@ const songs = [
     {
         id: 12,
         name: "Anh Đã Quen Với Cô Đơn",
-        singer: "Soobin Hoàng Sơn",
+        singer: ["Soobin Hoàng Sơn"],
         thumbnail: "./assets/img/music/listSong1/song7.jpg",
         album: null,
         playlist: null,
@@ -123,7 +123,7 @@ const songs = [
     {
         id: 13,
         name: "Túy Âm",
-        singer: "Xesi, Masew, Nhật Nguyễn",
+        singer: ["Xesi", "Masew", "Nhật Nguyễn"],
         thumbnail: "./assets/img/music/listSong1/song8.jpg",
         album: null,
         playlist: null,
@@ -133,7 +133,7 @@ const songs = [
     {
         id: 14,
         name: "Kém Duyên",
-        singer: "Rum, NIT, Masew",
+        singer: ["Rum", "NIT", "Masew"],
         thumbnail: "./assets/img/music/listSong1/song9.jpg",
         album: null,
         playlist: null,
@@ -143,7 +143,7 @@ const songs = [
     {
         id: 15,
         name: "Tình Bạn Diệu Kì",
-        singer: "AMEE, Ricky Star, Lăng LD",
+        singer: ["AMEE", "Ricky Star", "Lăng LD"],
         thumbnail: "./assets/img/music/listSong1/song10.jpg",
         album: null,
         playlist: null,
@@ -153,7 +153,7 @@ const songs = [
     {
         id: 16,
         name: "Em Có Nghe",
-        singer: "Kha",
+        singer: ["Kha"],
         thumbnail: "./assets/img/music/listSong1/song11.jpg",
         album: null,
         playlist: null,
@@ -163,7 +163,7 @@ const songs = [
     {
         id: 17,
         name: "Lạc Trôi",
-        singer: "Sơn Tùng M-TP",
+        singer: ["Sơn Tùng M-TP"],
         thumbnail: "./assets/img/music/listSong1/song12.jpg",
         album: null,
         playlist: null,
@@ -173,7 +173,7 @@ const songs = [
     {
         id: 18,
         name: "Một Năm Mới Bình An",
-        singer: "Sơn Tùng MTP",
+        singer: ["Sơn Tùng MTP"],
         thumbnail: "./assets/img/music/listSong1/song13.jpg",
         album: null,
         playlist: null,
@@ -183,7 +183,7 @@ const songs = [
     {
         id: 19,
         name: "Hongkong1 (Official Version)",
-        singer: "Nguyễn Trọng Tài, San Ji, Double X",
+        singer: ["Nguyễn Trọng Tài", "San Ji", "Double X"],
         thumbnail: "./assets/img/music/listSong1/song14.jpg",
         album: null,
         playlist: null,
@@ -193,7 +193,7 @@ const songs = [
     {
         id: 20,
         name: "Gác Lại Âu Lo",
-        singer: "Da LAB, Miu Lê",
+        singer: ["Da LAB", "Miu Lê"],
         thumbnail: "./assets/img/music/listSong1/song15.jpg",
         album: null,
         playlist: null,
@@ -203,7 +203,7 @@ const songs = [
     {
         id: 21,
         name: "Chạy Ngay Đi",
-        singer: "Sơn Tùng MTP",
+        singer: ["Sơn Tùng MTP"],
         thumbnail: "./assets/img/music/listSong1/song16.jpg",
         album: null,
         playlist: null,
@@ -213,7 +213,7 @@ const songs = [
     {
         id: 22,
         name: "Cùng Anh",
-        singer: "Ngọc Dolil, Hagi, STee",
+        singer: ["Ngọc Dolil", "Hagi", "STee"],
         thumbnail: "./assets/img/music/listSong1/song17.jpg",
         album: null,
         playlist: null,
@@ -223,7 +223,7 @@ const songs = [
     {
         id: 23,
         name: "Hãy Trao Cho Anh",
-        singer: "Sơn Tùng MTP",
+        singer: ["Sơn Tùng MTP"],
         thumbnail: "./assets/img/music/listSong1/song18.jpg",
         album: null,
         playlist: null,
@@ -233,7 +233,7 @@ const songs = [
     {
         id: 23,
         name: "Tộc Ca",
-        singer: "Phúc Du, SONBEAT",
+        singer: ["Phúc Du", "SONBEAT"],
         thumbnail: "./assets/img/music/listSong1/song19.jpg",
         album: null,
         playlist: null,
@@ -243,11 +243,134 @@ const songs = [
     {
         id: 24,
         name: "Phố Đã Lên Đèn",
-        singer: "Phố Đã Lên Đèn",
+        singer: ["Huyền Tâm Môn"],
         thumbnail: "./assets/img/music/listSong1/song21.jpg",
         album: null,
         playlist: null,
         genre: "Modern Music",
         path: "./assets/music/listSong1/song21.mp3",
+    },
+];
+
+const playlist1 = [
+    {
+        name: "Rồi Tới Luôn",
+        singer: ["Nal"],
+        path: "./assets/music/listSong2/song1.mp3",
+        image: "./assets/img/music/listSong2/song1.jpg",
+    },
+    {
+        name: "Yêu Là Cưới",
+        singer: ["PHÁT HỒ X2X"],
+        path: "./assets/music/listSong2/song2.mp3",
+        image: "./assets/img/music/listSong2/song2.jpg",
+    },
+    {
+        name: "Độ Tộc 2",
+        singer: ["Masew", "Độ Mixi", "Phúc Du", "Pháo"],
+        path: "./assets/music/listSong2/song3.mp3",
+        image: "./assets/img/music/listSong2/song3.jpg",
+    },
+    {
+        name: "Chúng Ta Của Hiện Tại",
+        singer: ["Sơn Tùng M-TP"],
+        path: "./assets/music/listSong2/song4.mp3",
+        image: "./assets/img/music/listSong2/song4.jpg",
+    },
+    {
+        name: "Em Không Hiểu",
+        singer: ["Changg", "Minh Huy"],
+        path: "./assets/music/listSong2/song5.mp3",
+        image: "./assets/img/music/listSong2/song5.jpg",
+    },
+    {
+        name: "Đã Lỡ Yêu Em Nhiều",
+        singer: ["JustaTee"],
+        path: "./assets/music/listSong2/song6.mp3",
+        image: "./assets/img/music/listSong2/song6.jpg",
+    },
+    {
+        name: "Cưới Đi",
+        singer: ["2T", "ChangC"],
+        path: "./assets/music/listSong2/song7.mp3",
+        image: "./assets/img/music/listSong2/song7.jpg",
+    },
+    {
+        name: "Ái Nộ",
+        singer: ["Masew", "Khoi Vu"],
+        path: "./assets/music/listSong2/song8.mp3",
+        image: "./assets/img/music/listSong2/song8.jpg",
+    },
+    {
+        name: "Thằng Điên",
+        singer: ["JustaTee", "Phương Ly"],
+        path: "./assets/music/listSong2/song9.mp3",
+        image: "./assets/img/music/listSong2/song9.jpg",
+    },
+    {
+        name: "Yêu Đơn Phương",
+        singer: ["OnlyC", "Karik"],
+        path: "./assets/music/listSong2/song10.mp3",
+        image: "./assets/img/music/listSong2/song10.jpg",
+    },
+    {
+        name: "Trời Giấu Trời Mang Đi",
+        singer: ["AMEE", "VIRUSS"],
+        path: "./assets/music/listSong2/song11.mp3",
+        image: "./assets/img/music/listSong2/song11.jpg",
+    },
+    {
+        name: "Ex's Hate Me",
+        singer: ["B Ray", "Masew", "AMEE"],
+        path: "./assets/music/listSong2/song12.mp3",
+        image: "./assets/img/music/listSong2/song12.jpg",
+    },
+    {
+        name: "The PlayAh(Special Performance / Official Music Video)",
+        singer: ["Soobin", "SlimV"],
+        path: "./assets/music/listSong2/song13.mp3",
+        image: "./assets/img/music/listSong2/song13.jpg",
+    },
+    {
+        name: "Muộn Rồi Mà Sao Còn",
+        singer: ["Sơn Tùng MTP"],
+        path: "./assets/music/listSong2/song14.mp3",
+        image: "./assets/img/music/listSong2/song14.jpg",
+    },
+    {
+        name: "Cưới Thôi",
+        singer: ["Masew", "B Ray", "TAP"],
+        path: "./assets/music/listSong2/song15.mp3",
+        image: "./assets/img/music/listSong2/song15.jpg",
+    },
+    {
+        name: "Mượn Rượu Tỏ Tình",
+        singer: ["Big Daddy", "Emily"],
+        path: "./assets/music/listSong2/song16.mp3",
+        image: "./assets/img/music/listSong2/song16.jpg",
+    },
+    {
+        name: "Yêu Một Người Có Lẽ",
+        singer: ["Lou Hoàng", "Miu Lê"],
+        path: "./assets/music/listSong2/song17.mp3",
+        image: "./assets/img/music/listSong2/song17.jpg",
+    },
+    {
+        name: "Anh Không Đòi Quà",
+        singer: ["OnlyC", "Karik"],
+        path: "./assets/music/listSong2/song18.mp3",
+        image: "./assets/img/music/listSong2/song18.jpg",
+    },
+    {
+        name: "Đi Đu Đưa Đi",
+        singer: ["Bích Phương"],
+        path: "./assets/music/listSong2/song19.mp3",
+        image: "./assets/img/music/listSong2/song19.jpg",
+    },
+    {
+        name: "BlackJack",
+        singer: ["Soobin", "Binz"],
+        path: "./assets/music/listSong2/song20.webm",
+        image: "./assets/img/music/listSong2/song20.jpg",
     },
 ];

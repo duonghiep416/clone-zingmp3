@@ -332,10 +332,16 @@ main {
     margin-bottom: 3px;
 }
 
+.singer-container,
 .song-singer {
     color: hsla(0, 0%, 100%, 0.6);
     font-size: 1.2rem;
     font-weight: 300;
+}
+
+.song-singer:hover {
+    text-decoration: underline;
+    color: hsla(0, 0%, 100%, 0.815);
 }
 
 .song-item .song-thumb {
