@@ -13,6 +13,7 @@
         />
         <link rel="stylesheet" href="./assets/css/reset.css" />
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/css/playlist.css" />
     </head>
     <body>
         <div class="wrapper">
@@ -509,6 +510,10 @@
                         <img src="./assets/img/user/i27.jpg" alt="" />
                     </div>
                 </header>
+                <section class="playlist-section">
+                    <h2 class="playlist-section-title">GẦN ĐÂY</h2>
+                    <div class="playlist-item-container"></div>
+                </section>
             </main>
             <aside class="queue-sidebar">
                 <div class="player-queue-header">
@@ -550,7 +555,7 @@
                     <img src="" class="song-thumb-control" alt="" />
                     <div class="song-info">
                         <p class="song-name"></p>
-                        <a href="#" class="song-singer"></a>
+                        <span href="#" class="song-singer-container"></span>
                     </div>
                     <div class="song-actions">
                         <span class="song-action-item"
@@ -613,5 +618,6 @@
         </div>
         <script src="./data/song.js"></script>
         <script src="./main.js"></script>
+        <script src="./assets/js/playlist.js"></script>
     </body>
 </html>

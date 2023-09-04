@@ -1,0 +1,35 @@
+.playlist-section {
+    margin-top: 20px;
+}
+
+.playlist-item-container {
+    display: flex;
+    gap: 30px;
+}
+
+.playlist-section-title {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.playlist-item {
+    max-width: 153px;
+    max-height: 202px;
+    cursor: pointer;
+}
+
+.playlist-thumbnail img {
+    width: 100%;
+    height: 153px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.playlist-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 10px;
+}

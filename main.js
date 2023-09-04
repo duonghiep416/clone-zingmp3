@@ -3,7 +3,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 const playlistSong = $(".playlist-songs");
 const nameCurrentSong = $(".player-control .song-name");
-const singerCurrentSong = $(".player-control .song-singer");
+const singerCurrentSong = $(".player-control .song-singer-container");
 const thumbnailCurrentSong = $(".player-control .song-thumb-control");
 const actionPlay = $(".action-play");
 const playBtn = $(".player-control #play-song-btn");
@@ -23,31 +23,36 @@ const dotTimeBar = $(".song-control-actions .current-time-bar .dot-time-bar");
 const dotVolumeBar = $(
     ".control-action-volume .current-time-bar .dot-time-bar"
 );
-const tooltipTime = $(".tooltip-time");
 
+const tooltipTime = $(".tooltip-time");
 const muteBtn = $(".volume-icon .unmuted");
 const unmuteBtn = $(".volume-icon .muted");
 const audio = $("#song-audio");
+podcast.sort(function (a, b) {
+    if (a.ordinal_number < b.ordinal_number) {
+        return -1;
+    }
+});
+let playlist = podcast;
 const app = {
     currentIndex: 0,
-
     // Render the playlist
-    render: function () {
-        let html = songs
-            .map((song, index) => {
+    render: function (playlist) {
+        let html = playlist
+            .map((playlist, index) => {
                 return `
                 <div class="song-item ${
                     this.currentIndex === index ? "active" : ""
                 }" data-index=${index}>
                     <img
-                        src="${song.thumbnail}"
-                        alt="${song.name}"
+                        src="${playlist.thumbnail}"
+                        alt="${playlist.name}"
                         class="song-thumb"
                     />
                     <div class="song-info">
-                        <p class="song-name">${song.name}</p>
+                        <p class="song-name">${playlist.name}</p>
                         <span class='singer-container'>
-                        ${song.singer
+                        ${playlist.singer
                             .map(
                                 (singer) =>
                                     `<a href="#" class="song-singer">${singer}</a>`
@@ -63,10 +68,13 @@ const app = {
         playlistSong.innerHTML = html;
     },
 
-    getCurrentSong: function () {
-        let currentSong = songs[this.currentIndex];
+    getCurrentSong: function (playlist) {
+        let currentSong = playlist[this.currentIndex];
         nameCurrentSong.innerHTML = currentSong.name;
-        singerCurrentSong.innerHTML = currentSong.singer;
+        singerCurrentSong.innerHTML = currentSong.singer
+            .map((singer) => `<a href="#" class="song-singer">${singer}</a>`)
+            .join(", ");
+        singerCurrentSong.style.color = "hsla(0, 0%, 100%, 0.5)";
         thumbnailCurrentSong.src = currentSong.thumbnail;
         thumbnailCurrentSong.alt = currentSong.name;
         audio.src = currentSong.path;
@@ -303,24 +311,24 @@ const app = {
         playlistSong.addEventListener("click", function (e) {
             let songItem = e.target.closest(".song-item");
             app.currentIndex = +songItem.getAttribute("data-index");
-            app.getCurrentSong();
-            app.render();
+            app.getCurrentSong(playlist);
+            app.render(playlist);
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
         });
 
         //Next song
-        function nextSong() {
+        function nextSong(playlist) {
             if (randomIsOn && !replayIsOn) {
-                let randomNumber = Math.floor(Math.random() * songs.length);
+                let randomNumber = Math.floor(Math.random() * playlist.length);
                 while (app.currentIndex === randomNumber) {
-                    randomNumber = Math.floor(Math.random() * songs.length);
+                    randomNumber = Math.floor(Math.random() * playlist.length);
                 }
                 app.currentIndex = randomNumber;
             } else if (!randomIsOn && !replayIsOn) {
                 app.currentIndex++;
-                if (app.currentIndex > songs.length - 1) {
+                if (app.currentIndex > playlist.length - 1) {
                     app.currentIndex = 0;
                 }
             } else if (
@@ -330,51 +338,56 @@ const app = {
                 app.currentIndex = app.currentIndex;
             }
 
-            app.getCurrentSong();
-            app.render();
+            app.getCurrentSong(playlist);
+            app.render(playlist);
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
         }
-        nextBtn.addEventListener("click", nextSong);
+        nextBtn.addEventListener("click", function () {
+            nextSong(playlist);
+        });
         audio.addEventListener("timeupdate", function () {
             if (audio.currentTime === audio.duration) {
-                nextSong();
+                nextSong(playlist);
             }
         });
 
         //Previous Song
-        prevBtn.addEventListener("click", function () {
+        function prevSong(playlist) {
             if (randomIsOn && !replayIsOn) {
-                let randomNumber = Math.floor(Math.random() * songs.length);
+                let randomNumber = Math.floor(Math.random() * playlist.length);
                 while (app.currentIndex === randomNumber) {
-                    randomNumber = Math.floor(Math.random() * songs.length);
+                    randomNumber = Math.floor(Math.random() * playlist.length);
                 }
 
                 app.currentIndex = randomNumber;
             } else if (!randomIsOn && !replayIsOn) {
                 app.currentIndex--;
                 if (app.currentIndex < 0) {
-                    app.currentIndex = songs.length - 1;
+                    app.currentIndex = playlist.length - 1;
                 }
             }
             if ((!randomIsOn && replayIsOn) || (randomIsOn && replayIsOn)) {
                 app.currentIndex = app.currentIndex;
             }
 
-            app.getCurrentSong();
-            app.render();
+            app.getCurrentSong(playlist);
+            app.render(playlist);
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
+        }
+        prevBtn.addEventListener("click", function () {
+            prevSong(playlist);
         });
     },
 
     start: function () {
-        this.render();
+        this.render(playlist);
         this.checkIsPlaying();
         this.handleEvents();
-        this.getCurrentSong();
+        this.getCurrentSong(playlist);
         this.renderTimeSong();
     },
 };

@@ -1,6 +1,7 @@
 const songs = [
     {
         id: 1,
+        type: "music",
         name: "Trước khi em tồn tại",
         singer: ["Việt Anh"],
         thumbnail: "https://i3.ytimg.com/vi/jtFsZRHUyPE/maxresdefault.jpg",
@@ -11,6 +12,7 @@ const songs = [
     },
     {
         id: 2,
+        type: "music",
         name: "id 072019 | 3107",
         singer: ["W/n"],
         thumbnail: "https://i3.ytimg.com/vi/leJb3VhQCrg/maxresdefault.jpg",
@@ -21,6 +23,7 @@ const songs = [
     },
     {
         id: 3,
+        type: "music",
         name: "QUERRY",
         singer: ["QNT"],
         thumbnail: "https://i3.ytimg.com/vi/7PxxZWrlRTc/maxresdefault.jpg",
@@ -31,6 +34,7 @@ const songs = [
     },
     {
         id: 4,
+        type: "music",
         name: "XTC (Xích Thêm Chút)",
         singer: ["Rapital", "Groovie", "RPT Orijinn"],
         thumbnail:
@@ -42,6 +46,7 @@ const songs = [
     },
     {
         id: 5,
+        type: "music",
         name: "3107 3",
         singer: ["W/n", "DuongG", "Nâu"],
         thumbnail: "https://i3.ytimg.com/vi/kfw7MYah2n0/maxresdefault.jpg",
@@ -52,6 +57,7 @@ const songs = [
     },
     {
         id: 6,
+        type: "music",
         name: "Cứ Chill Thôi",
         singer: ["Chillies", "Suni Hạ Linh", "Rhymastic"],
         thumbnail: "./assets/img/music/listSong1/song1.jpg",
@@ -62,6 +68,7 @@ const songs = [
     },
     {
         id: 7,
+        type: "music",
         name: "Crush",
         singer: ["WN", "Vani", "An An"],
         thumbnail: "./assets/img/music/listSong1/song2.jpg",
@@ -72,6 +79,7 @@ const songs = [
     },
     {
         id: 8,
+        type: "music",
         name: "Vô Tình",
         singer: ["Xesi", "Hoaprox"],
         thumbnail: "./assets/img/music/listSong1/song3.jpg",
@@ -82,6 +90,7 @@ const songs = [
     },
     {
         id: 9,
+        type: "music",
         name: "Because I'm Stupid",
         singer: ["SS501"],
         thumbnail: "./assets/img/music/listSong1/song4.jpg",
@@ -92,6 +101,7 @@ const songs = [
     },
     {
         id: 10,
+        type: "music",
         name: "Mama Boy",
         singer: ["AMEE"],
         thumbnail: "./assets/img/music/listSong1/song5.jpg",
@@ -102,6 +112,7 @@ const songs = [
     },
     {
         id: 11,
+        type: "music",
         name: "Cửu Vĩ Hồ",
         singer: ["Yun", "Dr A"],
         thumbnail: "./assets/img/music/listSong1/song6.jpg",
@@ -112,6 +123,7 @@ const songs = [
     },
     {
         id: 12,
+        type: "music",
         name: "Anh Đã Quen Với Cô Đơn",
         singer: ["Soobin Hoàng Sơn"],
         thumbnail: "./assets/img/music/listSong1/song7.jpg",
@@ -122,6 +134,7 @@ const songs = [
     },
     {
         id: 13,
+        type: "music",
         name: "Túy Âm",
         singer: ["Xesi", "Masew", "Nhật Nguyễn"],
         thumbnail: "./assets/img/music/listSong1/song8.jpg",
@@ -132,6 +145,7 @@ const songs = [
     },
     {
         id: 14,
+        type: "music",
         name: "Kém Duyên",
         singer: ["Rum", "NIT", "Masew"],
         thumbnail: "./assets/img/music/listSong1/song9.jpg",
@@ -142,6 +156,7 @@ const songs = [
     },
     {
         id: 15,
+        type: "music",
         name: "Tình Bạn Diệu Kì",
         singer: ["AMEE", "Ricky Star", "Lăng LD"],
         thumbnail: "./assets/img/music/listSong1/song10.jpg",
@@ -152,6 +167,7 @@ const songs = [
     },
     {
         id: 16,
+        type: "music",
         name: "Em Có Nghe",
         singer: ["Kha"],
         thumbnail: "./assets/img/music/listSong1/song11.jpg",
@@ -162,6 +178,7 @@ const songs = [
     },
     {
         id: 17,
+        type: "music",
         name: "Lạc Trôi",
         singer: ["Sơn Tùng M-TP"],
         thumbnail: "./assets/img/music/listSong1/song12.jpg",
@@ -172,6 +189,7 @@ const songs = [
     },
     {
         id: 18,
+        type: "music",
         name: "Một Năm Mới Bình An",
         singer: ["Sơn Tùng MTP"],
         thumbnail: "./assets/img/music/listSong1/song13.jpg",
@@ -182,6 +200,7 @@ const songs = [
     },
     {
         id: 19,
+        type: "music",
         name: "Hongkong1 (Official Version)",
         singer: ["Nguyễn Trọng Tài", "San Ji", "Double X"],
         thumbnail: "./assets/img/music/listSong1/song14.jpg",
@@ -192,6 +211,7 @@ const songs = [
     },
     {
         id: 20,
+        type: "music",
         name: "Gác Lại Âu Lo",
         singer: ["Da LAB", "Miu Lê"],
         thumbnail: "./assets/img/music/listSong1/song15.jpg",
@@ -202,6 +222,7 @@ const songs = [
     },
     {
         id: 21,
+        type: "music",
         name: "Chạy Ngay Đi",
         singer: ["Sơn Tùng MTP"],
         thumbnail: "./assets/img/music/listSong1/song16.jpg",
@@ -212,6 +233,7 @@ const songs = [
     },
     {
         id: 22,
+        type: "music",
         name: "Cùng Anh",
         singer: ["Ngọc Dolil", "Hagi", "STee"],
         thumbnail: "./assets/img/music/listSong1/song17.jpg",
@@ -222,6 +244,7 @@ const songs = [
     },
     {
         id: 23,
+        type: "music",
         name: "Hãy Trao Cho Anh",
         singer: ["Sơn Tùng MTP"],
         thumbnail: "./assets/img/music/listSong1/song18.jpg",
@@ -232,6 +255,7 @@ const songs = [
     },
     {
         id: 23,
+        type: "music",
         name: "Tộc Ca",
         singer: ["Phúc Du", "SONBEAT"],
         thumbnail: "./assets/img/music/listSong1/song19.jpg",
@@ -242,6 +266,7 @@ const songs = [
     },
     {
         id: 24,
+        type: "music",
         name: "Phố Đã Lên Đèn",
         singer: ["Huyền Tâm Môn"],
         thumbnail: "./assets/img/music/listSong1/song21.jpg",
@@ -249,6 +274,45 @@ const songs = [
         playlist: null,
         genre: "Modern Music",
         path: "./assets/music/listSong1/song21.mp3",
+    },
+];
+
+const podcast = [
+    {
+        id: 24,
+        type: "podcast",
+        name: "TÔI LÀ AI? #15 | THIẾU KỶ LUẬT, MẤT TỰ DO",
+        singer: ["Mây Podcast"],
+        thumbnail: "./assets/img/podcast/maypodcast_toilaai_15.jpg",
+        album: null,
+        playlist: "TÔI LÀ AI",
+        genre: null,
+        path: "./assets/podcast/maypodcast_toilaai_15.mp3",
+        ordinal_number: 15,
+    },
+    {
+        id: 25,
+        type: "podcast",
+        name: "TÔI LÀ AI? #16 | BẠN ĐÃ THỰC SỰ YÊU BẢN THÂN",
+        singer: ["Mây Podcast"],
+        thumbnail: "./assets/img/podcast/maypodcast_toilaai_16.jpg",
+        album: null,
+        playlist: "TÔI LÀ AI",
+        genre: null,
+        path: "./assets/podcast/maypodcast_toilaai_16.mp3",
+        ordinal_number: 16,
+    },
+    {
+        id: 26,
+        type: "podcast",
+        name: "TÔI LÀ AI? #4 | ĐỪNG CHỌN RỜI BỎ CUỘC SỐNG NÀY!",
+        singer: ["Mây Podcast"],
+        thumbnail: "./assets/img/podcast/maypodcast_toilaai_14.jpg",
+        album: null,
+        playlist: "TÔI LÀ AI",
+        genre: null,
+        path: "./assets/podcast/maypodcast_toilaai_14.mp3",
+        ordinal_number: 4,
     },
 ];
 
