@@ -14,6 +14,13 @@ const playlists = [
         playlist_thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_webp/cover/c/5/3/e/c53e20e9ecf03b0bb4315deb90fe9063.jpg",
     },
+    {
+        id: 3,
+        title: "Rap Việt",
+        data: "rapmusic",
+        playlist_thumbnail:
+            "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/2/f/5/c/2f5cfe5f80e3edf52a72ccbf9551be8d.jpg",
+    },
 ];
 function renderPlaylist(playlists) {
     let htmls = playlists.map((playlist) => {
