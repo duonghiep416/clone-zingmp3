@@ -325,6 +325,7 @@ const app = {
                 app.currentIndex = randomNumber;
             } else if (!randomIsOn && !replayIsOn) {
                 app.currentIndex++;
+                audio.currentTime = 0;
                 if (app.currentIndex > playlist.length - 1) {
                     app.currentIndex = 0;
                 }
