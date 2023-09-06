@@ -152,29 +152,26 @@ const app = {
                 if (isDragging) {
                     pointEnd = e.clientX;
                     space = pointEnd - pointStart;
-                    if (space + initialSpace <= durationTimeBar.offsetWidth) {
-                        currentTimeBar.style.width = `${
-                            ((space + initialSpace) * 100) /
-                            durationTimeBar.offsetWidth
-                        }%`;
+                    let newWidth =
+                        ((space + initialSpace) * 100) /
+                        durationTimeBar.offsetWidth;
+
+                    if (newWidth >= 0 && newWidth <= 100) {
+                        currentTimeBar.style.width = `${newWidth}%`;
                     }
                 }
             });
 
             document.addEventListener("mouseup", function () {
                 if (isDragging) {
-                    audio.currentTime = Math.floor(
-                        ((pointEnd - pointStart + initialSpace) /
+                    let newTime =
+                        (currentTimeBar.offsetWidth /
                             durationTimeBar.offsetWidth) *
-                            audio.duration
-                    );
+                        audio.duration;
+                    audio.currentTime = newTime;
                     audio.play();
-                    initialSpace += space;
                     isDragging = false;
                 }
-            });
-            durationTimeBar.addEventListener("mousedown", function (e) {
-                initialSpace += e.offsetX - currentTimeBar.offsetWidth;
             });
         }
         dragTimeBar();
