@@ -52,6 +52,8 @@ function handleChoosePlaylist(number, playlists) {
             app.currentIndex = 0;
             app.render(playlist);
             app.getCurrentSong(playlist);
+            audio.currentTime = 0;
+            currentTimeBar.style.width = `0%`;
             audio.play();
             document.querySelector(".playlist-status-name").innerHTML =
                 playlistItem.querySelector(".playlist-title").innerHTML;
