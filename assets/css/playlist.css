@@ -12,6 +12,7 @@
     color: #fff;
     font-weight: 700;
     margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .playlist-item {
@@ -27,7 +28,6 @@
 
 .playlist-thumbnail img {
     width: 100%;
-    height: 153px;
     object-fit: cover;
     transition: scale 0.5s;
 }
@@ -41,4 +41,23 @@
     font-weight: 600;
     color: #fff;
     margin-top: 10px;
+}
+
+.playlist-item.playlist-item-big {
+    max-width: 240px;
+    max-height: 280px;
+}
+
+.playlist-desc {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+    cursor: pointer;
+    color: #8b8791;
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
