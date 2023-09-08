@@ -23,6 +23,7 @@ const dotTimeBar = $(".song-control-actions .current-time-bar .dot-time-bar");
 const dotVolumeBar = $(
     ".control-action-volume .current-time-bar .dot-time-bar"
 );
+const songItem = $$(".song-item");
 
 const tooltipTime = $(".tooltip-time");
 const muteBtn = $(".volume-icon .unmuted");
@@ -33,7 +34,7 @@ podcast.sort(function (a, b) {
         return -1;
     }
 });
-let playlist = podcast;
+let playlist = sadMusic2;
 const app = {
     currentIndex: 0,
     // Render the playlist
@@ -313,6 +314,7 @@ const app = {
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
+            renderLyricSong(playlist, app.currentIndex);
         });
 
         //Next song
@@ -342,6 +344,7 @@ const app = {
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
+            renderLyricSong(playlist, app.currentIndex);
         }
         nextBtn.addEventListener("click", function () {
             nextSong(playlist);
@@ -376,6 +379,7 @@ const app = {
             audio.play();
             app.checkIsPlaying();
             app.renderTimeSong();
+            renderLyricSong(playlist, app.currentIndex);
         }
         prevBtn.addEventListener("click", function () {
             prevSong(playlist);

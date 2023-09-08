@@ -57,6 +57,7 @@ function handleChoosePlaylist(number, playlists) {
             audio.play();
             document.querySelector(".playlist-status-name").innerHTML =
                 playlistItem.querySelector(".playlist-title").innerHTML;
+            renderLyricSong(playlist, app.currentIndex);
         });
     });
 }

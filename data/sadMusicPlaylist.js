@@ -8,6 +8,8 @@ const sadMusic2 = [
         singer: ["Emcee L", "Muộii"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/0/0/a/8/00a8eb97e7f7e6cd0e3e6a2e5d86cdbd.jpg",
+        thumbnail_big:
+            "//photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/0/0/a/8/00a8eb97e7f7e6cd0e3e6a2e5d86cdbd.jpg",
         album: ["Chuyện đôi ta (Single)"],
         playlist: ["Sad Music"],
         genre: "Modern Music",
@@ -20,6 +22,8 @@ const sadMusic2 = [
         singer: ["Suni Hạ Linh"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/e/6/4/9/e6496aca6e85a9db5bcb045966ef168d.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/e/6/4/9/e6496aca6e85a9db5bcb045966ef168d.jpg",
         album: ["Ngỏ Lời (Single)"],
         playlist: ["Sad Music"],
         genre: "Modern Music",
@@ -32,6 +36,8 @@ const sadMusic2 = [
         singer: ["Suni Hạ Linh", "Lou Hoàng"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/4/8/f/f/48ffdb72c21e5865fa0f2f1f269f0e16.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/4/8/f/f/48ffdb72c21e5865fa0f2f1f269f0e16.jpg",
         album: [null],
         playlist: ["Sad Music"],
         genre: "Modern Music",
@@ -44,6 +50,8 @@ const sadMusic2 = [
         singer: ["Tóc Tiên", "Touliver"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/9/0/3/6/90368c6fa9dfb60ecd2a3ce1fd474696.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/9/0/3/6/90368c6fa9dfb60ecd2a3ce1fd474696.jpg",
         album: [null],
         playlist: ["Sad Music"],
         genre: "Modern Music",
@@ -59,6 +67,8 @@ const sadMusic3 = [
         singer: ["Han Sara", "Kayy Trần"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/9/6/d/7/96d7b4cb72085cfdebf5d1d3e33f2682.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/9/6/d/7/96d7b4cb72085cfdebf5d1d3e33f2682.jpg",
         album: [null],
         playlist: ["Sad Music"],
         genre: "Modern Music",

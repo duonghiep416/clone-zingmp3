@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="./assets/css/reset.css" />
         <link rel="stylesheet" href="./assets/css/style.css" />
         <link rel="stylesheet" href="./assets/css/playlist.css" />
+        <link rel="stylesheet" href="./assets/css/lyric.css" />
     </head>
     <body>
         <div class="wrapper">
@@ -590,6 +591,9 @@
                     </div>
                 </div>
                 <div class="control-action-volume">
+                    <div class="view-lyric-btn">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
                     <div class="volume-icon">
                         <i class="fa-solid fa-volume-high unmuted"></i>
                         <i class="fa-solid fa-volume-xmark muted"></i>
@@ -605,10 +609,25 @@
                 </div>
             </footer>
         </div>
+        <section class="lyric-container">
+            <header class="lyric-header">
+                <div class="lyric-choose-tab-container">
+                    <span class="tab-item">Danh sách phát</span>
+                    <span class="tab-item">Karaoke</span>
+                    <span class="tab-item is-active">Lời bài hát</span>
+                </div>
+            </header>
+            <div class="lyric-body">
+                <div class="song-thumbnail-lyric"></div>
+                <div class="lyric-text-container"></div>
+            </div>
+        </section>
         <script src="./data/song.js"></script>
         <script src="./data/sadMusicPlaylist.js"></script>
         <script src="./main.js"></script>
         <script src="./data/playlistItems.js"></script>
+        <script src="./data/lyric.js"></script>
         <script src="./assets/js/playlist.js"></script>
+        <script src="./assets/js/lyric.js"></script>
     </body>
 </html>
