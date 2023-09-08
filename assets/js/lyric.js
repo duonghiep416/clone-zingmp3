@@ -1,8 +1,3 @@
-const viewLyricBtn = $(".view-lyric-btn");
-const lyricContainer = $(".lyric-container");
-const lyricTextContainer = $(".lyric-text-container");
-const songThumbnailLyric = $(".song-thumbnail-lyric");
-
 function showLyric() {
     isShowLyric = false;
     viewLyricBtn.addEventListener("click", function () {
