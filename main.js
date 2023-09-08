@@ -319,6 +319,7 @@ const app = {
             app.checkIsPlaying();
             app.renderTimeSong();
             renderLyricSong(playlist, app.currentIndex);
+            lyricTextContainer.scrollTo(0, 0);
         });
 
         //Next song
