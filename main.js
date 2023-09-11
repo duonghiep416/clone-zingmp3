@@ -27,7 +27,8 @@ const songItem = $$(".song-item");
 const viewLyricBtn = $(".view-lyric-btn");
 const lyricContainer = $(".lyric-container");
 const lyricTextContainer = $(".lyric-text-container");
-const songThumbnailLyric = $(".song-thumbnail-lyric");
+const karaokeTextContainer = $(".karaoke-text-container");
+const songThumbnailLyric = $$(".song-thumbnail-lyric");
 
 const tooltipTime = $(".tooltip-time");
 const muteBtn = $(".volume-icon .unmuted");
@@ -320,6 +321,7 @@ const app = {
             app.renderTimeSong();
             renderLyricSong(playlist, app.currentIndex);
             lyricTextContainer.scrollTo(0, 0);
+            karaokeTextContainer.scrollTo(0, 0);
         });
 
         //Next song
@@ -351,6 +353,7 @@ const app = {
             app.renderTimeSong();
             renderLyricSong(playlist, app.currentIndex);
             lyricTextContainer.scrollTo(0, 0);
+            karaokeTextContainer.scrollTo(0, 0);
         }
         nextBtn.addEventListener("click", function () {
             nextSong(playlist);
@@ -386,6 +389,8 @@ const app = {
             app.checkIsPlaying();
             app.renderTimeSong();
             renderLyricSong(playlist, app.currentIndex);
+            lyricTextContainer.scrollTo(0, 0);
+            karaokeTextContainer.scrollTo(0, 0);
         }
         prevBtn.addEventListener("click", function () {
             prevSong(playlist);

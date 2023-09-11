@@ -59,6 +59,7 @@
     display: inline-block;
     font-weight: 700;
     border-radius: 999px;
+    cursor: pointer;
 }
 
 .lyric-choose-tab-container .tab-item.is-active {
@@ -79,6 +80,7 @@
     object-fit: cover;
 }
 
+.karaoke-body,
 .lyric-body {
     display: flex;
     justify-content: center;
@@ -102,6 +104,10 @@
     color: #ffed00;
 }
 
+.karaoke-text-container {
+    height: 245px;
+    overflow-y: scroll;
+}
 .lyric-text-container {
     height: 420px;
     overflow-y: scroll;
@@ -109,4 +115,8 @@
 
 .lyric-text-container::-webkit-scrollbar {
     width: 0;
+}
+
+.karaoke-body {
+    display: none;
 }

@@ -60,6 +60,7 @@ select {
 }
 .main::-webkit-scrollbar,
 .category-sidebar::-webkit-scrollbar,
+.karaoke-text-container::-webkit-scrollbar,
 .queue-sidebar::-webkit-scrollbar {
     width: 0px;
 }

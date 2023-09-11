@@ -1,5 +1,4 @@
 const sadMusic = songs.filter((song) => song.playlist.includes("Sad Music"));
-
 const sadMusic2 = [
     {
         id: 1,
@@ -78,9 +77,11 @@ const sadMusic3 = [
         id: 2,
         type: "music",
         name: "Tận cùng nỗi nhớ",
-        singer: ["Suni Hạ Linh"],
+        singer: ["Will", "Han Sara"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/1/a/1/f/1a1f5688569dfc52005abf304676ea63.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/1/a/1/f/1a1f5688569dfc52005abf304676ea63.jpg",
         album: [null],
         playlist: ["Sad Music"],
         genre: "Modern Music",
@@ -93,6 +94,8 @@ const sadMusic3 = [
         singer: ["Nguyenn", "Aric"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/7/0/6/b/706b2e3d7175a9adfba716ece162ddbe.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/7/0/6/b/706b2e3d7175a9adfba716ece162ddbe.jpg",
         album: [null],
         playlist: ["Sad Music"],
         genre: "Modern Music",
@@ -105,6 +108,8 @@ const sadMusic3 = [
         singer: ["14 Casper", "Bon"],
         thumbnail:
             "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/c/4/4/e/c44e1e8b4901e3c4cdbe1d28816ad028.jpg",
+        thumbnail_big:
+            "https://photo-resize-zmp3.zmdcdn.me/w480_r1x1_webp/cover/c/4/4/e/c44e1e8b4901e3c4cdbe1d28816ad028.jpg",
         album: [null],
         playlist: ["Sad Music"],
         genre: "Modern Music",

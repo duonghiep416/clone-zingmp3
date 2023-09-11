@@ -28,14 +28,26 @@ function getLyricCurrentSong(playlist, currentIndex) {
 
 function renderLyricSong(playlist, currentIndex) {
     let currentSong = getLyricCurrentSong(playlist, currentIndex);
-    const htmlLyric = currentSong.timeBySentences
-        .map((lyric) => `<p class="lyric-sentence">${lyric.text.trim()}</p>`)
-        .join("");
-    lyricTextContainer.innerHTML = htmlLyric;
-    songThumbnailLyric.innerHTML = `<img
-    src="${playlist[app.currentIndex].thumbnail_big}"
-    alt="${playlist[app.currentIndex].name}"
-/>`;
+    let sentenceLyric = "";
+    let sentenceKaraoke = "";
+    currentSong.timeByWords.forEach(function (timeByWord) {
+        let textSentence = "";
+        timeByWord.words.forEach(function (word) {
+            textSentence += word.data.trim() + " ";
+        });
+        textSentence = textSentence.trim();
+        sentenceLyric += '<p class="lyric-sentence">' + textSentence + "</p>";
+        sentenceKaraoke += '<p class="lyric-sentence">' + textSentence + "</p>";
+
+        lyricTextContainer.innerHTML = sentenceLyric;
+        karaokeTextContainer.innerHTML = sentenceKaraoke;
+    });
+    songThumbnailLyric.forEach((songThumbnail) => {
+        songThumbnail.innerHTML = `<img
+        src="${playlist[app.currentIndex].thumbnail_big}"
+        alt="${playlist[app.currentIndex].name}"
+    />`;
+    });
 }
 renderLyricSong(playlist, app.currentIndex);
 let sentence = document.querySelector(".lyric-sentence");
@@ -45,33 +57,49 @@ function millisecondsToSeconds(milliseconds) {
     return milliseconds / 1000;
 }
 function activeSentenceLyric(playlist, currentIndex) {
-    let p = $$(".lyric-sentence");
-    let currentSong = getLyricCurrentSong(playlist, currentIndex);
-    currentSong.timeBySentences.forEach((timeBySentence, index) => {
-        let secondStart = millisecondsToSeconds(timeBySentence.start);
-        let secondEnd = millisecondsToSeconds(timeBySentence.end);
+    let pLyric = $$(".lyric-text-container .lyric-sentence");
+    let pKaraoke = $$(".karaoke-text-container .lyric-sentence");
+    const currentSong = getLyricCurrentSong(playlist, currentIndex);
+    currentSong.timeByWords.forEach((timeByWord, index) => {
+        let secondStart = millisecondsToSeconds(timeByWord.words[0].startTime);
+        let secondEnd = millisecondsToSeconds(
+            timeByWord.words[timeByWord.words.length - 1].endTime
+        );
         //Active Sentence
         if (
             secondStart <= audio.currentTime &&
             audio.currentTime <= secondEnd
         ) {
-            p[index].classList.add("is-active");
+            pLyric[index].classList.add("is-active");
+            pKaraoke[index].classList.add("is-active");
         } else if (secondStart >= audio.currentTime) {
-            p[index].classList.remove("is-over");
-            p[index].classList.remove("is-active");
+            pLyric[index].classList.remove("is-over");
+            pLyric[index].classList.remove("is-active");
+            pKaraoke[index].classList.remove("is-over");
+            pKaraoke[index].classList.remove("is-active");
             isNewSentenceActive = true;
         } else {
-            p[index].classList.remove("is-active");
-            p[index].classList.add("is-over");
+            pLyric[index].classList.remove("is-active");
+            pLyric[index].classList.add("is-over");
+            pKaraoke[index].classList.remove("is-active");
+            pKaraoke[index].classList.add("is-over");
         }
         // Scroll
         if (isNewSentenceActive) {
             isNewSentenceActive = false;
-            const activeSentenceIndex = [...$$(".lyric-sentence")].findIndex(
-                (p) => p.classList.contains("is-active")
+            const activeSentenceIndexLyric = [...pLyric].findIndex((pLyric) =>
+                pLyric.classList.contains("is-active")
             );
-            const sentence = $$(".lyric-sentence")[activeSentenceIndex];
-            sentence.scrollIntoView({
+            const activeSentenceIndexKaraoke = [...pKaraoke].findIndex(
+                (pKaraoke) => pKaraoke.classList.contains("is-active")
+            );
+            const sentenceLyric = pLyric[activeSentenceIndexLyric];
+            const sentenceKaraoke = pKaraoke[activeSentenceIndexKaraoke];
+            sentenceLyric.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+            });
+            sentenceKaraoke.scrollIntoView({
                 behavior: "smooth",
                 block: "center",
             });
@@ -81,3 +109,27 @@ function activeSentenceLyric(playlist, currentIndex) {
 audio.addEventListener("timeupdate", function () {
     activeSentenceLyric(playlist, app.currentIndex);
 });
+
+function selectLyricTabs() {
+    const lyricTabs = $$(".lyric-choose-tab-container .tab-item");
+    const tabItemLyric = $(".tab-item-lyric");
+    const tabItemKaraoke = $(".tab-item-karaoke");
+    const lyricBody = $(".lyric-body");
+    const karaokeBody = $(".karaoke-body");
+    lyricTabs.forEach((tab) => {
+        tab.addEventListener("click", function (e) {
+            lyricTabs.forEach((tab) => {
+                tab.classList.remove("is-active");
+            });
+            tab.classList.add("is-active");
+            if (tabItemLyric.classList.contains("is-active")) {
+                lyricBody.style.display = "flex";
+                karaokeBody.style.display = "none";
+            } else if (tabItemKaraoke.classList.contains("is-active")) {
+                lyricBody.style.display = "none";
+                karaokeBody.style.display = "flex";
+            }
+        });
+    });
+}
+selectLyricTabs();
