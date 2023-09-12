@@ -206,3 +206,7 @@ function updateCurrentSentencce(playlist, currentIndex) {
 //     }
 // }
 // checkSongHaveLyric(playlist, app.currentIndex);
+
+window.alert(
+    'Chức năng lời bài hát và chức năng karaoke có sẵn trong các playlist trong mục "Tâm trạng hơi suy"!'
+);
