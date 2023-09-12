@@ -13,6 +13,7 @@ const sadMusic2 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/chuyen-doi-ta.mp3",
+        haveLyric: true,
     },
     {
         id: 2,
@@ -27,6 +28,7 @@ const sadMusic2 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/ngo-loi.mp3",
+        haveLyric: true,
     },
     {
         id: 3,
@@ -41,6 +43,7 @@ const sadMusic2 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/khong-sao-ma-em-day-roi.mp3",
+        haveLyric: true,
     },
     {
         id: 4,
@@ -55,6 +58,7 @@ const sadMusic2 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/co-ai-thuong-em-nhu-anh.mp3",
+        haveLyric: true,
     },
 ];
 
@@ -72,6 +76,7 @@ const sadMusic3 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/dem-cuu.mp3",
+        haveLyric: true,
     },
     {
         id: 2,
@@ -86,6 +91,7 @@ const sadMusic3 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/tan-cung-noi-nho.mp3",
+        haveLyric: true,
     },
     {
         id: 3,
@@ -100,6 +106,7 @@ const sadMusic3 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/anh-da-tu-bo-roi-day.mp3",
+        haveLyric: true,
     },
     {
         id: 4,
@@ -114,5 +121,6 @@ const sadMusic3 = [
         playlist: ["Sad Music"],
         genre: "Modern Music",
         path: "./assets/music/sadMusic/co-ai-o-day-khong.mp3",
+        haveLyric: true,
     },
 ];

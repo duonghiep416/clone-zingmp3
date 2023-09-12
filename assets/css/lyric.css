@@ -89,6 +89,7 @@
     height: calc(100vh - 50px - 90px);
 }
 
+.karaoke-text-container .text-wait .lyric-sentence .song-singer-karaoke,
 .lyric-sentence {
     padding: 20px 0;
     font-size: 4.4rem;
@@ -107,6 +108,7 @@
 .karaoke-text-container {
     height: 245px;
     overflow-y: scroll;
+    transition: 0.3s linear;
 }
 .lyric-text-container {
     height: 420px;
@@ -119,4 +121,30 @@
 
 .karaoke-body {
     display: none;
+    transition: 0.3s linear;
+}
+
+.text-wait {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s linear;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transition: 0.3s linear;
+}
+
+.showInfoSong {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    height: 245px;
+}
+
+.hideInfoSong {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    overflow: hidden;
 }

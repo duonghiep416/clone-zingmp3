@@ -1,3 +1,9 @@
+const textWait = $(".text-wait");
+const lyricTabs = $$(".lyric-choose-tab-container .tab-item");
+const tabItemLyric = $(".tab-item-lyric");
+const tabItemKaraoke = $(".tab-item-karaoke");
+const lyricBody = $(".lyric-body");
+const karaokeBody = $(".karaoke-body");
 function showLyric() {
     isShowLyric = false;
     viewLyricBtn.addEventListener("click", function () {
@@ -30,7 +36,7 @@ function renderLyricSong(playlist, currentIndex) {
     let currentSong = getLyricCurrentSong(playlist, currentIndex);
     let sentenceLyric = "";
     let sentenceKaraoke = "";
-    currentSong.timeByWords.forEach(function (timeByWord) {
+    currentSong.timeByWords.forEach(function (timeByWord, index) {
         let textSentence = "";
         timeByWord.words.forEach(function (word) {
             textSentence += word.data.trim() + " ";
@@ -38,9 +44,18 @@ function renderLyricSong(playlist, currentIndex) {
         textSentence = textSentence.trim();
         sentenceLyric += '<p class="lyric-sentence">' + textSentence + "</p>";
         sentenceKaraoke += '<p class="lyric-sentence">' + textSentence + "</p>";
-
         lyricTextContainer.innerHTML = sentenceLyric;
         karaokeTextContainer.innerHTML = sentenceKaraoke;
+        textWait.innerHTML = `
+        <p class="lyric-sentence">Tên bài hát: ${
+            playlist[currentIndex].name
+        }</p>
+        <p class="lyric-sentence">Ca sĩ: ${playlist[currentIndex].singer
+            .map(
+                (singer) => `<span class="song-singer-karaoke">${singer}</span>`
+            )
+            .join(", ")}</p>
+        `;
     });
     songThumbnailLyric.forEach((songThumbnail) => {
         songThumbnail.innerHTML = `<img
@@ -60,6 +75,7 @@ function activeSentenceLyric(playlist, currentIndex) {
     let pLyric = $$(".lyric-text-container .lyric-sentence");
     let pKaraoke = $$(".karaoke-text-container .lyric-sentence");
     const currentSong = getLyricCurrentSong(playlist, currentIndex);
+
     currentSong.timeByWords.forEach((timeByWord, index) => {
         let secondStart = millisecondsToSeconds(timeByWord.words[0].startTime);
         let secondEnd = millisecondsToSeconds(
@@ -80,10 +96,11 @@ function activeSentenceLyric(playlist, currentIndex) {
             isNewSentenceActive = true;
         } else {
             pLyric[index].classList.remove("is-active");
-            pLyric[index].classList.add("is-over");
             pKaraoke[index].classList.remove("is-active");
+            pLyric[index].classList.add("is-over");
             pKaraoke[index].classList.add("is-over");
         }
+
         // Scroll
         if (isNewSentenceActive) {
             isNewSentenceActive = false;
@@ -106,16 +123,8 @@ function activeSentenceLyric(playlist, currentIndex) {
         }
     });
 }
-audio.addEventListener("timeupdate", function () {
-    activeSentenceLyric(playlist, app.currentIndex);
-});
 
 function selectLyricTabs() {
-    const lyricTabs = $$(".lyric-choose-tab-container .tab-item");
-    const tabItemLyric = $(".tab-item-lyric");
-    const tabItemKaraoke = $(".tab-item-karaoke");
-    const lyricBody = $(".lyric-body");
-    const karaokeBody = $(".karaoke-body");
     lyricTabs.forEach((tab) => {
         tab.addEventListener("click", function (e) {
             lyricTabs.forEach((tab) => {
@@ -133,3 +142,67 @@ function selectLyricTabs() {
     });
 }
 selectLyricTabs();
+
+let sentenceIndex = 0;
+function showSongInfoWhileWaiting(playlist, currentIndex) {
+    const currentSong = getLyricCurrentSong(playlist, currentIndex);
+    const sentence = currentSong.timeByWords[sentenceIndex];
+    if (
+        !currentSong.timeByWords[sentenceIndex + 1] &&
+        sentence.words[sentence.words.length - 1].endTime <=
+            audio.currentTime * 1000
+    ) {
+        textWait.classList.add("showInfoSong");
+        karaokeTextContainer.classList.add("hideInfoSong");
+        sentenceIndex = 0;
+    } else if (
+        currentSong.timeByWords[sentenceIndex + 1].words[0].startTime -
+            sentence.words[sentence.words.length - 1].endTime >
+            2000 &&
+        sentence.words[sentence.words.length - 1].endTime <=
+            audio.currentTime * 1000
+    ) {
+        textWait.classList.add("showInfoSong");
+        karaokeTextContainer.classList.add("hideInfoSong");
+        karaokeTextContainer.classList.remove("showInfoSong");
+    } else if (
+        currentSong.timeByWords[0].words[0].startTime >=
+        audio.currentTime * 1000
+    ) {
+        textWait.classList.add("showInfoSong");
+        karaokeTextContainer.classList.add("hideInfoSong");
+        karaokeTextContainer.classList.remove("showInfoSong");
+    } else if (
+        sentence.words[0].startTime <= audio.currentTime * 1000 &&
+        audio.currentTime * 1000 <=
+            sentence.words[sentence.words.length - 1].endTime
+    ) {
+        textWait.classList.remove("showInfoSong");
+        karaokeTextContainer.classList.remove("hideInfoSong");
+        karaokeTextContainer.classList.add("showInfoSong");
+    }
+}
+audio.addEventListener("timeupdate", function () {
+    updateCurrentSentencce(playlist, app.currentIndex);
+    showSongInfoWhileWaiting(playlist, app.currentIndex);
+    activeSentenceLyric(playlist, app.currentIndex);
+});
+function updateCurrentSentencce(playlist, currentIndex) {
+    const currentSong = getLyricCurrentSong(playlist, currentIndex);
+    currentSong.timeByWords.forEach((timeByWord, index) => {
+        if (
+            timeByWord.words[0].startTime <= audio.currentTime * 1000 &&
+            audio.currentTime * 1000 <=
+                timeByWord.words[timeByWord.words.length - 1].endTime
+        ) {
+            sentenceIndex = index;
+        }
+    });
+}
+
+// function checkSongHaveLyric(playlist, currentIndex) {
+//     if (!playlist[currentIndex].haveLyric) {
+//         window.alert("Chưa có lời cho bài hát này!");
+//     }
+// }
+// checkSongHaveLyric(playlist, app.currentIndex);
